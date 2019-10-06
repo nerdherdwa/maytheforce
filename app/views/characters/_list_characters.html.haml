@@ -2,7 +2,7 @@
 - attributes = [:character_name, :location_string, :affiliation_string, :gender, :species, :weapon, :vehicle]
 
 .pagination
-  = paginate @characters
+  = paginate(@characters, remote: true)
   
 %table.table
   %thead.thead-dark

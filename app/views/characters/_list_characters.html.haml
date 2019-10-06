@@ -1,0 +1,26 @@
+- scope = 'activerecord.attributes.characters'
+- attributes = [:character_name, :location_string, :affiliation_string, :gender, :species, :weapon, :vehicle]
+
+.pagination
+  = paginate @characters
+  
+%table.table
+  %thead.thead-dark
+    %tr
+      - attributes.each do |attribute|
+        %th{scope: "col"}= filterrific_sorting_link(@filterrific, I18n.t(attribute, scope: scope))
+  %tbody
+    - @characters.each do |character|
+      %tr
+        - attributes.each do |attribute|
+          - v = character.send attribute
+          %td= format_field(v)
+  
+.well{ style: 'height: 80px; margin-top:55px;'}
+  %h3 Import Characters
+  = form_tag(import_characters_path, name: "upload", id: "uploady",multipart: true, remote: true) do
+    .row
+      .col-lg-6
+        = file_field_tag "file"
+      .col-md-6
+        = submit_tag "Import", class: "btn btn-primary pull-right", id: "search-form"

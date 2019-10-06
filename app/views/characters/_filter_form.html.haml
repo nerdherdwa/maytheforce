@@ -1,0 +1,8 @@
+.card.card-body.bg-light
+  = form_for_filterrific @filterrific do |f|
+    .row
+      .col-md-12
+        .form-group
+          %label.font-weight-bold Search
+          = f.text_field :search_query,
+                          :class => 'filterrific-periodically-observed form-control'

@@ -1,25 +1,9 @@
-- header = "Characters"
-- scope = 'activerecord.attributes.characters'
-- attributes = [:name, :gender, :species, :weapon, :vehicle]
+- header = 'Characters'
 
-%h1 header
-.pagination
-  = pagination @characters
-  
-%table.table
-  %thead.thead-dark
-    %tr
-      - attributes.each do |attribute|
-        %th{scope: "col"}= I18n.t(attribute, scope: scope)
-  %tbody
-    - @characters.each do |character|
-      - v = character.send attribute
-      %td= format_field(v)
-    
-  %h3 Import Characters
-  = form_tag(import_characters_path, name: "upload", id: "uploady",multipart: true, remote: true) do
-    .row
-      .col-lg-12.col-md-12
-        = file_field_tag "file"
-      .col-md-11
-        = submit_tag "Import", class: "btn btn-primary pull-right", id: "search-form"
+.well{ style: 'height: 80px;'}
+  %h1= header
+
+= render partial: 'filter_form'
+
+#results
+  = render partial: 'list_characters'

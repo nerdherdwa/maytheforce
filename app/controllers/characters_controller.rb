@@ -4,6 +4,21 @@ class CharactersController < ApplicationController
 
   def index
 
+    (@filterrific = initialize_filterrific(
+      Character,
+      params[:filterrific],
+      select_options: {
+        sorted_by: Character.options_for_sorted_by,
+      },
+    )) || return
+
+    @characters = paged(@filterrific.find.page(params[:page]))
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
+    
   end
 
   def import

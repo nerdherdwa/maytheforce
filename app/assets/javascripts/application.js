@@ -15,6 +15,8 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require popper
+//= require filterrific/filterrific-jquery
+//= require components/datepicker
 //= require activestorage
 //= require turbolinks
 //= require_tree .

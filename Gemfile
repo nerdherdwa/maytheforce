@@ -39,7 +39,7 @@ gem 'filterrific'
 gem 'pg_search'
 
 # styling
-gem 'bootstrap', '~> 4.0.0'
+gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
 gem 'haml'
 # Reduces boot times through caching; required in config/boot.rb

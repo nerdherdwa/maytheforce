@@ -1,30 +1,21 @@
-.container
-  %h1 Characters
+- header = "Characters"
+- scope = 'activerecord.attributes.characters'
+- attributes = [:name, :gender, :species, :weapon, :vehicle]
 
-  %table.table
-    %thead.thead-dark
-      %tr
-        %th{scope: "col"} #
-        %th{scope: "col"} First
-        %th{scope: "col"} Last
-        %th{scope: "col"} Handle
-    %tbody
-      %tr
-        %th{scope: "row"} 1
-        %td Mark
-        %td Otto
-        %td @mdo
-      %tr
-        %th{scope: "row"} 2
-        %td Jacob
-        %td Thornton
-        %td @fat
-      %tr
-        %th{scope: "row"} 3
-        %td Larry
-        %td the Bird
-        %td @twitter
-
+%h1 header
+.pagination
+  = pagination @characters
+  
+%table.table
+  %thead.thead-dark
+    %tr
+      - attributes.each do |attribute|
+        %th{scope: "col"}= I18n.t(attribute, scope: scope)
+  %tbody
+    - @characters.each do |character|
+      - v = character.send attribute
+      %td= format_field(v)
+    
   %h3 Import Characters
   = form_tag(import_characters_path, name: "upload", id: "uploady",multipart: true, remote: true) do
     .row
@@ -32,3 +23,4 @@
         = file_field_tag "file"
       .col-md-11
         = submit_tag "Import", class: "btn btn-primary pull-right", id: "search-form"
+   

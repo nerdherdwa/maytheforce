@@ -16,5 +16,12 @@ module ApplicationHelper
     end
     nil
   end
-
+  
+  def format_field(value)
+    return format_boolean(value) if (value == true or value == false)
+    return I18n.l(value, format: :generic) if value.is_a? Date
+    return I18n.l(value&.localtime, format: :generic) if value.is_a? Time
+    value
+  end
+  
 end

@@ -40,4 +40,17 @@ en:
 
   activerecord:
     models:
+      character: 'Character'
+      location: 'Location'
+      affiliation: 'Affiliation'
       
+    attributes:
+      character:
+        name: 'Character Name'
+        species: 'Species'
+        gender: 'Gender'
+        weapon: 'Weapon'
+        vehicle: 'Vehicle'
+      location:
+        location_descripiton: 'Locations'
+        affiliation: 'Affiliations'

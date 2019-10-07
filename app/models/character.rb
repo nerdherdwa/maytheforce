@@ -37,9 +37,9 @@ class Character < ApplicationRecord
     when /^Vehicle_/
       order("LOWER(characters.vehicle) #{direction}")
     when /^Location_/
-      
+      order("LOWER(locations.location_description) #{direction}").includes(:locations).references(:locations)
     when /^Affiliation_/
-      
+      order("LOWER(affiliations.affiliation_description) #{direction}").includes(:affiliations).references(:affiliations)
     else
       raise(ArgumentError, "Invalid sort option: #{sort_option.inspect}")
     end
